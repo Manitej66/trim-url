@@ -59,7 +59,7 @@ const Home = ({ setThemeType }) => {
             <Text h3 style={{ textAlign: "center" }}>
               Trimmed URL
             </Text>
-            <Snippet text={`http://localhost:3000/${shorturl}`} width="100%" />
+            <Snippet text={`https://trim-url.vercel.app/${shorturl}`} width="100%" />
           </>
         )}
       </div>
