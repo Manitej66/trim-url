@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { GeistProvider, CssBaseline } from "@geist-ui/react";
+import Home from "./components/Home";
+import Nav from "./components/Nav";
+import { useState } from "react";
+import Redirect from "./components/Redirect";
 
 function App() {
+  const [themeType, setThemeType] = useState("light");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GeistProvider themeType={themeType}>
+        <CssBaseline />
+        <Nav setThemeType={setThemeType} />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/:id" component={Redirect} />
+        </Switch>
+      </GeistProvider>
+    </Router>
   );
 }
 
